@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <title>Shit</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+    #text {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      width: auto;
+      color: white;
+      overflow: hidden;
+      font-size: 80px;
+    }
+
+    body {
+      background-color: black;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="text">MY TEXT HERE</h1>
+  <!-- Sry for shitty js -->
+  <script>
+    let gMul = 1;
+
+    let gX = 1 * gMul;
+    let gY = 1 * gMul;
+
+    let posX = 0;
+    let posY = 0;
+
+    function randCol() {
+      return Math.floor(Math.random()*16777215).toString(16);
+    }
+
+    setInterval(function() {
+      let text = $("#text");
+      
+      let width = $(text).width();
+      let height = $(text).height();
+
+      posX += gX
+      posY += gY
+
+      if (posX >= $(document).width() - width - 1) {
+        gX = -1 * gMul;
+      }
+      if (posX <= 0) {
+        gX = 1 * gMul;
+      }
+      if (posY >= $(document).height() - height) {
+        gY = -1 * gMul;
+      }
+      if (posY <= 0) {
+        gY = 1 * gMul;
+      }
+
+      $(text).css("left", posX += gX);
+      $(text).css("top", posY += gY);
+    }, 10);
+  </script>
+</body>
+</html>
